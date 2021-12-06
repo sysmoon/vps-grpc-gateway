@@ -1,5 +1,8 @@
 syntax = "proto3";
 
+// import "vp_state.proto";
+// import "vp_camera.proto";
+// import "vp_sensors.proto";
 import "schema/SensorData/vp_state.proto";
 import "schema/SensorData/vp_camera.proto";
 import "schema/SensorData/vp_sensors.proto";

@@ -2,14 +2,18 @@ syntax = "proto3";
 
 import "google/protobuf/wrappers.proto";
 
+// import "prdb_meta.proto";
+// import "vp_tracking.proto";
+// import "vp_msg.proto";
 import "schema/VPResult/prdb_meta.proto";
 import "schema/SensorData/vp_tracking.proto";
 import "schema/SensorData/vp_msg.proto";
 
+
 package vpresult;
 
 option java_package = "vp.service";
-option go_package = "github.com/sysmoon/vps-grpc-gatewayschema/VPResult";
+option go_package = "github.com/sysmoon/vps-grpc-gateway/schema/VPResult";
 
 service LocationService {
 	rpc getLocationPose (vpdata.VPData) returns (VPService_t) {}

@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+package lfsppdb.keyframeindex;
+
+option java_package = "dbms.lfsppdb";
+
+message KeyFrameIndexQ {
+	repeated uint64 u64KeyFrameIndex = 1;
+}

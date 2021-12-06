@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+import "lfsppdb.proto";
+
+package lfsppdb.localfeature;
+
+option java_package = "dbms.lfsppdb";
+
+message LocalFeatureQ {
+	repeated uint64 u64KeyFrameIndex = 1;
+	/* uint8 u8NumofMatchedK4KeyPoint = 2; */
+	uint32 u8NumofMatchedK4KeyPoint = 2;
+	repeated lfsppdb.KeyPoint_t arstKeyPointIn = 3;
+	/* uint8 u8DistanceType = 4; */
+	uint32 u8DistanceType = 4;
+
+	/* Optional */
+	float f32DistanceThreshold = 5;
+}

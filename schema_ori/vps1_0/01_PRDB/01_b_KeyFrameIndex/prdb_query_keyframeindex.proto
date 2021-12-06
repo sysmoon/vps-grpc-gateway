@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package prdb.keyframeindex;
+
+option java_package = "dbms.prdb";
+
+message KeyFrameIndexQ {
+	repeated uint64 u64KeyFrameIndex = 1;
+	/* uint8 u8LocalFeatureFlag = 2; */
+	uint32 u8LocalFeatureFlag = 2;
+}

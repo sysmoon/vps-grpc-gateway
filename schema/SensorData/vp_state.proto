@@ -1,6 +1,7 @@
 syntax = "proto3";
 
 import "schema/SensorData/vp_tracking.proto";
+// import "vp_tracking.proto";
 
 package vpdata.state;
 

@@ -1,6 +1,8 @@
 package main
 
 import (
+	fmt "fmt"
+
 	vpresultpb "github.com/sysmoon/vps-grpc-gateway/schema/VPResult"
 )
 
@@ -15,6 +17,7 @@ type locationServiceServer struct {
 // }
 
 func main() {
+	fmt.Println("vps tet")
 	// lis, err := net.Listen("tcp", ":"+portNumber)
 	// if err != nil {
 	// 	log.Fatalf("failed to listen: %v", err)
