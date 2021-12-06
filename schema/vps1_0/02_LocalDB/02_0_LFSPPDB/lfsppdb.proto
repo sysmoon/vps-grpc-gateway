@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+import "prdb_meta.proto";
+
+package lfsppdb;
+
+option java_package = "dbms.lfsppdb";
+
+message KeyPoint_t {
+	prdb.meta.XYZ32_t stf32KeyPointWorld = 1;
+	/* repeated uint16 aru16KeyPointImage = 2; */
+	prdb.meta.UVPoint_t stKeyPointImage = 2;
+	repeated float arf32Descriptor = 3;
+
+	/* uint8 u8LocationIdx = 4; */
+	uint32 u8LocationIdx = 4;
+}
+
+message LFSPPDBUnit_t {
+	uint64 u64KeyFrameIndex = 1;
+	uint64 u64Timestamp = 2;	
+	prdb.meta.XYZ64_t stf64RefLocation = 3;
+	/* uint16 u16NumofKeyPointsN = 4; */
+	uint32 u16NumofKeyPointsN = 4;
+	repeated lfsppdb.KeyPoint_t arstKeyPoints = 5;
+}
+
+message LFSPPDBSet_t {
+	repeated lfsppdb.LFSPPDBUnit_t arstLFSPPDBSet = 1;
+}

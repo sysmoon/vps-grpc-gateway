@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+import "prdb_meta.proto";
+import "prdb_return_placevector.proto";
+
+package prdb.location;
+
+option java_package = "dbms.prdb";
+
+message Data_t {
+	prdb.meta.XYZ64_t stQueriedLocation = 1;
+	repeated prdb.placevector.Data_t stSortedLocationData = 2;
+}
+
+message LocationR {
+	repeated prdb.location.Data_t stData = 1;
+}

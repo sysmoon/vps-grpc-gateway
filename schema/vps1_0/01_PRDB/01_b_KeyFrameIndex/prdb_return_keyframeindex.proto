@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+import "prdb_meta.proto";
+import "prdb_netvlad.proto";
+import "lfsppdb.proto";
+
+package prdb.keyframeindex;
+
+option java_package = "dbms.prdb";
+
+message Data_t {
+	uint64 u64KeyFrameIndex = 1;
+	prdb.meta.Meta_t stMeta = 2;
+	prdb.netvlad.NetVLAD_t stNetVLADVector = 3;
+	prdb.meta.XYZ64_t stReferenceLocation = 4;
+	repeated lfsppdb.KeyPoint_t arstKeyPoint = 5;
+}
+
+message KeyFrameIndexR {
+	repeated prdb.keyframeindex.Data_t stData = 1;
+}

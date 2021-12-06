@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package prdb.netvlad;
+
+option java_package = "dbms.prdb";
+
+message NetVLAD_t {
+	repeated float arf32Descriptor = 1;
+}
+
+message NetvladDB_t{
+	repeated prdb.netvlad.NetVLAD_t stDescriptorVector = 1;
+}

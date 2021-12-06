@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+import "vp_msg.proto";
+
+package vlam.sa;
+
+option java_package = "vlam.imageenhancement";
+
+
+message ImageEnhancementIn {
+	// Only for Service
+
+	// for Both (Service & DB Creation)
+	vpdata.VPData stVPSensorData = 1;
+}
+
