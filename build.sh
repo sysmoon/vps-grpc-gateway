@@ -1,7 +1,6 @@
 #!/bin/bash
 
-### in case use relative import path
-# SensorData
+# grpc-server (/w SensorData)
 rm -f schema/SensorData/*.go
 protoc -I./ \
 	-I./schema \
@@ -10,10 +9,17 @@ protoc -I./ \
     --go_out=. --go_opt paths=source_relative
 
 
-# VPResult
+# grpc-server (/w VPResult)
 rm -f schema/VPResult/*.go    
 protoc -I./ \
     schema/VPResult/vpresult.proto \
     schema/VPResult/prdb_meta.proto \
     --go_out . --go_opt paths=source_relative \
     --go-grpc_out . --go-grpc_opt paths=source_relative
+
+# grpc-gateway
+protoc -I . \
+	    --grpc-gateway_out . \
+	    --grpc-gateway_opt logtostderr=true \
+	    --grpc-gateway_opt paths=source_relative \
+        schema/VPResult/vpresult_grpc_gw.proto

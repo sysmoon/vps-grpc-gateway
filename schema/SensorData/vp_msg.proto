@@ -52,4 +52,5 @@ message VPBody {
 message VPData {
 	vpdata.VPHeader stVPHeader = 1;
 	vpdata.VPBody stVPBody = 2;	
+	string user_id = 3;
 }
