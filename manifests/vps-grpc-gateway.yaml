@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: vps-grpc-gateway
+spec:
+  selector:
+    matchLabels:
+      app: vps-grpc-gateway
+  template:
+    metadata:
+      labels:
+        app: vps-grpc-gateway
+    spec:
+      containers:
+      - name: vps-grpc-gateway
+        image: vpsregistry.azurecr.io/vps-grpc-gateway:1.0.0
+        resources:
+          limits:
+            memory: "256Mi"
+            cpu: "3000m"
+        ports:
+        - containerPort: 9000

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# curl -XPOST -H "Content-Type: Application/json" -d @sample.json  http://localhost:9000/skvps/locdata | jq '.'
+# curl -XPOST -H "Content-Type: Application/json" -d @sample.json  https://vpgw.vpslab.co.kr/skvps/locdata | jq '.'
 
 JSON_FILE_PATH=$1
 HOST=$2
@@ -14,4 +14,14 @@ if [ $# -eq 4 ]
 fi
 
 # json
-curl -XPOST -H "Content-Type: Application/json" -d @${JSON_FILE_PATH}  http://${HOST}:${PORT}/skvps/locdata | jq '.'
+printf "**********\n"
+printf "restapi test\n"
+printf "**********\n"
+
+curl -XPOST -H "Content-Type: Application/json" -d @${JSON_FILE_PATH}  https://${HOST}:${PORT}/skvps/locdata | jq '.'
+
+printf "**********\n"
+printf "grpcurl test\n"
+printf "**********\n"
+# grpcurl
+grpcurl -vv  -user-agent 'gputype/t4' -d @ ${HOST}:${PORT} vpresult.LocationService/getLocationPose < ${JSON_FILE_PATH}

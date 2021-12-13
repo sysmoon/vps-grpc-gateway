@@ -26,7 +26,7 @@ func main() {
 	if err := vpresultpb.RegisterLocationServiceHandlerFromEndpoint(
 		ctx,
 		mux,
-		"vpgw.vpslab.co.kr:"+gRPCServerPortNumber,
+		"vpgw.vps.svc.cluster.local:"+gRPCServerPortNumber,
 		options,
 	); err != nil {
 		log.Fatalf("failed to register gRPC gateway: %v", err)

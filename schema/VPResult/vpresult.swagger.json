@@ -1,0 +1,854 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "schema/VPResult/vpresult.proto",
+    "version": "version not set"
+  },
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {},
+  "definitions": {
+    "Camera_tCameraType": {
+      "type": "string",
+      "enum": [
+        "eCameraStart",
+        "eFront_1",
+        "eFront_2",
+        "eFront_End",
+        "eBack_1",
+        "eBack_2",
+        "eBack_3",
+        "eBack_4",
+        "eBack_5",
+        "eBack_6",
+        "eBack_End"
+      ],
+      "default": "eCameraStart"
+    },
+    "Camera_tCodec": {
+      "type": "string",
+      "enum": [
+        "eUNKNOWN_CODEC",
+        "eUNCOMPRESSED",
+        "eJPG",
+        "ePNG"
+      ],
+      "default": "eUNKNOWN_CODEC"
+    },
+    "Camera_tPixelFormat": {
+      "type": "string",
+      "enum": [
+        "eUNKNOWN_FORMAT",
+        "e8BIT",
+        "eGRAY8",
+        "eRGB8",
+        "eBGR8",
+        "e16BIT",
+        "eGRAY12",
+        "eGRAY14",
+        "eGRAY16",
+        "eRGB12",
+        "eBGR12",
+        "eRGB14",
+        "eBGR14",
+        "eRGB16",
+        "eBGR16",
+        "e32BIT",
+        "eGRAY32U",
+        "eRGB32U",
+        "eBGR32U",
+        "eGRAY32F",
+        "eRGB32F",
+        "eBGR32F",
+        "eCOMPRESSED",
+        "eYUV420P8",
+        "eYUYV422I8",
+        "eUYVY422I8"
+      ],
+      "default": "eUNKNOWN_FORMAT"
+    },
+    "VPState_tVPStatus": {
+      "type": "string",
+      "enum": [
+        "eUNKNOWN_STATUS",
+        "eINIT",
+        "eTRACK",
+        "eCOSTING",
+        "eFAIL"
+      ],
+      "default": "eUNKNOWN_STATUS"
+    },
+    "VgeoDBcommonOrientation32_t": {
+      "type": "object",
+      "properties": {
+        "fqX": {
+          "type": "number",
+          "format": "float"
+        },
+        "fqY": {
+          "type": "number",
+          "format": "float"
+        },
+        "fqZ": {
+          "type": "number",
+          "format": "float"
+        },
+        "fqW": {
+          "type": "number",
+          "format": "float"
+        }
+      }
+    },
+    "VgeoDBcommonXYZ32_t": {
+      "type": "object",
+      "properties": {
+        "fX": {
+          "type": "number",
+          "format": "float"
+        },
+        "fY": {
+          "type": "number",
+          "format": "float"
+        },
+        "fZ": {
+          "type": "number",
+          "format": "float"
+        }
+      }
+    },
+    "cameraCamera_t": {
+      "type": "object",
+      "properties": {
+        "u64TSCapture": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "eCameraType": {
+          "$ref": "#/definitions/Camera_tCameraType"
+        },
+        "eCodec": {
+          "$ref": "#/definitions/Camera_tCodec"
+        },
+        "u16Width": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "u16Height": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "ePixelFormat": {
+          "$ref": "#/definitions/Camera_tPixelFormat"
+        },
+        "imgData": {
+          "type": "string",
+          "format": "byte"
+        },
+        "stExtrinsic": {
+          "$ref": "#/definitions/commonExtrinsic_t",
+          "title": "Add Extrinsic"
+        }
+      }
+    },
+    "commonExtrinsic_t": {
+      "type": "object",
+      "properties": {
+        "stTranslate": {
+          "$ref": "#/definitions/VgeoDBcommonXYZ32_t"
+        },
+        "stOrientation": {
+          "$ref": "#/definitions/VgeoDBcommonOrientation32_t"
+        }
+      }
+    },
+    "metaMeta_t": {
+      "type": "object",
+      "properties": {
+        "u64KeyFrameIndex": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "u64Timestamp": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "stAvgLocation": {
+          "$ref": "#/definitions/prdbmetaXYZ64_t"
+        },
+        "stOrientation": {
+          "$ref": "#/definitions/prdbmetaOrientation32_t"
+        },
+        "stDirectionVector": {
+          "$ref": "#/definitions/prdbmetaXYZ32_t"
+        },
+        "stLocationSet": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/prdbmetaXYZ64_t"
+          }
+        }
+      }
+    },
+    "prdbmetaOrientation32_t": {
+      "type": "object",
+      "properties": {
+        "f32qX": {
+          "type": "number",
+          "format": "float"
+        },
+        "f32qY": {
+          "type": "number",
+          "format": "float"
+        },
+        "f32qZ": {
+          "type": "number",
+          "format": "float"
+        },
+        "f32qW": {
+          "type": "number",
+          "format": "float"
+        }
+      }
+    },
+    "prdbmetaXYZ32_t": {
+      "type": "object",
+      "properties": {
+        "f32X": {
+          "type": "number",
+          "format": "float"
+        },
+        "f32Y": {
+          "type": "number",
+          "format": "float"
+        },
+        "f32Z": {
+          "type": "number",
+          "format": "float"
+        }
+      }
+    },
+    "prdbmetaXYZ64_t": {
+      "type": "object",
+      "properties": {
+        "f64X": {
+          "type": "number",
+          "format": "double"
+        },
+        "f64Y": {
+          "type": "number",
+          "format": "double"
+        },
+        "f64Z": {
+          "type": "number",
+          "format": "double"
+        }
+      }
+    },
+    "protobufAny": {
+      "type": "object",
+      "properties": {
+        "type_url": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string",
+          "format": "byte"
+        }
+      }
+    },
+    "runtimeError": {
+      "type": "object",
+      "properties": {
+        "error": {
+          "type": "string"
+        },
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/protobufAny"
+          }
+        }
+      }
+    },
+    "sensorsAccelerometerInfo_t": {
+      "type": "object",
+      "properties": {
+        "u64TSCapture": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "f32ax": {
+          "type": "number",
+          "format": "float"
+        },
+        "f32ay": {
+          "type": "number",
+          "format": "float"
+        },
+        "f32az": {
+          "type": "number",
+          "format": "float"
+        }
+      }
+    },
+    "sensorsBarometer_t": {
+      "type": "object",
+      "properties": {
+        "u64TSCapture": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "arf32Data": {
+          "type": "array",
+          "items": {
+            "type": "number",
+            "format": "float"
+          }
+        }
+      }
+    },
+    "sensorsGPSLocationInfo_t": {
+      "type": "object",
+      "properties": {
+        "u64TSCapture": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "f64Longitude": {
+          "type": "number",
+          "format": "double"
+        },
+        "f64Latitude": {
+          "type": "number",
+          "format": "double"
+        },
+        "f64Altitude": {
+          "type": "number",
+          "format": "double"
+        }
+      }
+    },
+    "sensorsGPS_t": {
+      "type": "object",
+      "properties": {
+        "u64TSCapture": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "arf32Pose": {
+          "type": "array",
+          "items": {
+            "type": "number",
+            "format": "float"
+          }
+        }
+      }
+    },
+    "sensorsGyroscopeInfo_t": {
+      "type": "object",
+      "properties": {
+        "u64TSCapture": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "f32gx": {
+          "type": "number",
+          "format": "float"
+        },
+        "f32gy": {
+          "type": "number",
+          "format": "float"
+        },
+        "f32gz": {
+          "type": "number",
+          "format": "float"
+        }
+      }
+    },
+    "sensorsIMU_t": {
+      "type": "object",
+      "properties": {
+        "u64TSCapture": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "arf32Data": {
+          "type": "array",
+          "items": {
+            "type": "number",
+            "format": "float"
+          }
+        }
+      }
+    },
+    "sensorsMCompass_t": {
+      "type": "object",
+      "properties": {
+        "u64TSCapture": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "arf32Data": {
+          "type": "array",
+          "items": {
+            "type": "number",
+            "format": "float"
+          }
+        }
+      }
+    },
+    "sensorsMagneticFieldInfo_t": {
+      "type": "object",
+      "properties": {
+        "u64TSCapture": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "f32mx": {
+          "type": "number",
+          "format": "float"
+        },
+        "f32my": {
+          "type": "number",
+          "format": "float"
+        },
+        "f32mz": {
+          "type": "number",
+          "format": "float"
+        }
+      }
+    },
+    "sensorsPressureInfo_t": {
+      "type": "object",
+      "properties": {
+        "u64TSCapture": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "f32Pressure": {
+          "type": "number",
+          "format": "float"
+        }
+      }
+    },
+    "sensorsRotationVectorInfo_t": {
+      "type": "object",
+      "properties": {
+        "u64TSCapture": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "f32qx": {
+          "type": "number",
+          "format": "float"
+        },
+        "f32qy": {
+          "type": "number",
+          "format": "float"
+        },
+        "f32qz": {
+          "type": "number",
+          "format": "float"
+        },
+        "f32qw": {
+          "type": "number",
+          "format": "float"
+        }
+      }
+    },
+    "sensorsStepCounterInfo_t": {
+      "type": "object",
+      "properties": {
+        "u64TSCapture": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "u32StepCounter": {
+          "type": "integer",
+          "format": "int64"
+        }
+      }
+    },
+    "sensorsStepDetectorInfo_t": {
+      "type": "object",
+      "properties": {
+        "u64TSCapture": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "u32StepDetector": {
+          "type": "boolean"
+        }
+      }
+    },
+    "stateVPState_t": {
+      "type": "object",
+      "properties": {
+        "eVPStatus": {
+          "$ref": "#/definitions/VPState_tVPStatus"
+        },
+        "u64TSLastLoc": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "arf64LastLocation": {
+          "type": "array",
+          "items": {
+            "type": "number",
+            "format": "double"
+          }
+        },
+        "arf32LastOrientation": {
+          "type": "array",
+          "items": {
+            "type": "number",
+            "format": "float"
+          }
+        },
+        "arf32LastDRPose": {
+          "type": "array",
+          "items": {
+            "type": "number",
+            "format": "float"
+          }
+        },
+        "arf32CurDRPose": {
+          "type": "array",
+          "items": {
+            "type": "number",
+            "format": "float"
+          }
+        },
+        "eVPStatusTrackingMode": {
+          "$ref": "#/definitions/trackingVPStatusTrackingMode"
+        },
+        "stFramePoseInfoSet": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/trackingFramePoseInfo_t"
+          }
+        },
+        "stLinearVelocityKF": {
+          "$ref": "#/definitions/trackingKalmanFilter_t"
+        },
+        "stVPSPoseKF": {
+          "$ref": "#/definitions/trackingKalmanFilter_t"
+        },
+        "stParamSet": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/trackingParam_t"
+          }
+        }
+      }
+    },
+    "trackingFramePoseInfo_t": {
+      "type": "object",
+      "properties": {
+        "stVPSPoseInfo": {
+          "$ref": "#/definitions/trackingPoseInfo_t"
+        },
+        "stLastDRPoseInfoArray": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/trackingPoseInfo_t"
+          }
+        },
+        "stLastEGPoseInfoArray": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/trackingPoseInfo_t"
+          }
+        }
+      }
+    },
+    "trackingKalmanFilter_t": {
+      "type": "object",
+      "properties": {
+        "f64State": {
+          "type": "array",
+          "items": {
+            "type": "number",
+            "format": "double"
+          }
+        },
+        "f32Covariance": {
+          "type": "array",
+          "items": {
+            "type": "number",
+            "format": "float"
+          }
+        }
+      }
+    },
+    "trackingMetaTrackingMode_t": {
+      "type": "object",
+      "properties": {
+        "eVPStatusTrackingMode": {
+          "$ref": "#/definitions/trackingVPStatusTrackingMode"
+        },
+        "stVPSPoseInfo": {
+          "$ref": "#/definitions/trackingPoseInfo_t"
+        },
+        "stCorrectingTr": {
+          "$ref": "#/definitions/trackingPose_t"
+        },
+        "stLinearVelocityKF": {
+          "$ref": "#/definitions/trackingKalmanFilter_t"
+        },
+        "stVPSPoseKF": {
+          "$ref": "#/definitions/trackingKalmanFilter_t"
+        }
+      }
+    },
+    "trackingParam_t": {
+      "type": "object",
+      "properties": {
+        "strName": {
+          "type": "string"
+        },
+        "s32Val": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "f32Val": {
+          "type": "number",
+          "format": "float"
+        },
+        "f64Val": {
+          "type": "number",
+          "format": "double"
+        },
+        "strVal": {
+          "type": "string"
+        },
+        "bVal": {
+          "type": "boolean"
+        }
+      }
+    },
+    "trackingPoseInfo_t": {
+      "type": "object",
+      "properties": {
+        "u64Timestamp": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "bPoseFlag": {
+          "type": "boolean"
+        },
+        "f32PoseConfidence": {
+          "type": "number",
+          "format": "float"
+        },
+        "stPose": {
+          "$ref": "#/definitions/trackingPose_t"
+        }
+      }
+    },
+    "trackingPose_t": {
+      "type": "object",
+      "properties": {
+        "f64X": {
+          "type": "number",
+          "format": "double"
+        },
+        "f64Y": {
+          "type": "number",
+          "format": "double"
+        },
+        "f64Z": {
+          "type": "number",
+          "format": "double"
+        },
+        "f32qX": {
+          "type": "number",
+          "format": "float"
+        },
+        "f32qY": {
+          "type": "number",
+          "format": "float"
+        },
+        "f32qZ": {
+          "type": "number",
+          "format": "float"
+        },
+        "f32qW": {
+          "type": "number",
+          "format": "float"
+        }
+      }
+    },
+    "trackingVPStatusTrackingMode": {
+      "type": "string",
+      "enum": [
+        "eLOST",
+        "eINITIALIZED",
+        "eLOCALIZED",
+        "eTRACKED",
+        "eCOSTING",
+        "eTRANSITION"
+      ],
+      "default": "eLOST"
+    },
+    "vpdataVPBody": {
+      "type": "object",
+      "properties": {
+        "stState": {
+          "$ref": "#/definitions/stateVPState_t"
+        },
+        "stCamera": {
+          "$ref": "#/definitions/cameraCamera_t"
+        },
+        "stGPS": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/sensorsGPS_t"
+          }
+        },
+        "stIMU": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/sensorsIMU_t"
+          }
+        },
+        "stBaroMeter": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/sensorsBarometer_t"
+          }
+        },
+        "stMagneticCompass": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/sensorsMCompass_t"
+          }
+        },
+        "stGPSLocationInfo": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/sensorsGPSLocationInfo_t"
+          }
+        },
+        "stAccelerometerInfo": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/sensorsAccelerometerInfo_t"
+          }
+        },
+        "stGyroscopeInfo": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/sensorsGyroscopeInfo_t"
+          }
+        },
+        "stRotationVectorInfo": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/sensorsRotationVectorInfo_t"
+          }
+        },
+        "stStepCounterInfo": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/sensorsStepCounterInfo_t"
+          }
+        },
+        "stStepDetectorInfo": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/sensorsStepDetectorInfo_t"
+          }
+        },
+        "stMagneticFieldInfo": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/sensorsMagneticFieldInfo_t"
+          }
+        },
+        "stPressureInfo": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/sensorsPressureInfo_t"
+          }
+        },
+        "stSubCameras": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/cameraCamera_t"
+          },
+          "title": "Multi-camera"
+        }
+      }
+    },
+    "vpdataVPHeader": {
+      "type": "object",
+      "properties": {
+        "strSchemaVer": {
+          "type": "string"
+        },
+        "strDeviceName": {
+          "type": "string"
+        },
+        "strOSInfo": {
+          "type": "string"
+        },
+        "ars32TelcoPCI": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "s32TelcoRSSI": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "u64TSSend": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "arf64LastLoc": {
+          "type": "array",
+          "items": {
+            "type": "number",
+            "format": "double"
+          }
+        },
+        "arf32Extrinsic": {
+          "type": "array",
+          "items": {
+            "type": "number",
+            "format": "float"
+          }
+        },
+        "strTargetEnv": {
+          "type": "string"
+        }
+      }
+    },
+    "vpresultVPService_t": {
+      "type": "object",
+      "properties": {
+        "stVPResult": {
+          "$ref": "#/definitions/metaMeta_t"
+        },
+        "stVPResultTrackingMode": {
+          "$ref": "#/definitions/trackingMetaTrackingMode_t",
+          "title": "Newly added members for Tracking Mode"
+        }
+      }
+    }
+  }
+}
